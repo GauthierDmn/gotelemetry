@@ -8,31 +8,31 @@ import (
 type FieldType string
 
 const (
-	Uint8 FieldType = "uint8"
-	Uint16 FieldType = "uint16"
-	Uint32 FieldType = "uint32"
-	Uint64 FieldType = "uint64"
-	Int8 FieldType = "int8"
-	Int16 FieldType = "int16"
-	Int32 FieldType = "int32"
-	Int64 FieldType = "int64"
+	Uint8   FieldType = "uint8"
+	Uint16  FieldType = "uint16"
+	Uint32  FieldType = "uint32"
+	Uint64  FieldType = "uint64"
+	Int8    FieldType = "int8"
+	Int16   FieldType = "int16"
+	Int32   FieldType = "int32"
+	Int64   FieldType = "int64"
 	Float32 FieldType = "float32"
 	Float64 FieldType = "float64"
-	String FieldType = "string"
-	Raw FieldType = "byte"
+	String  FieldType = "string"
+	Raw     FieldType = "byte"
 )
 
 type Field struct {
-	Name string
+	Name        string
 	Description string
-	Type FieldType
-	Size int
+	Type        FieldType
+	Size        int
 }
 
 func (f *Field) GetValue(data []byte) interface{} {
 	switch f.Type {
 	case "uint8":
-		return int(data[0])
+		return uint8(data[0])
 	case "uint16":
 		return binary.BigEndian.Uint16(data)
 	case "uint32":
